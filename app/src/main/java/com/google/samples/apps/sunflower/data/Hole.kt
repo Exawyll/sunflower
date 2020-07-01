@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google LLC
+ * Copyright 2020 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,24 +20,12 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "plants")
-data class Plant(
-    @PrimaryKey @ColumnInfo(name = "id") val plantId: String,
+//@Entity(tableName = "holes")
+data class Hole (
+//    @PrimaryKey @ColumnInfo(name = "id") val holeId: String,
     val name: String,
-    val description: String,
-    val parTotal: Int,
-    val holes: List<Hole> = emptyList(),
-//    val growZoneNumber: Int,
-//    val wateringInterval: Int = 7, // how often the plant should be watered, in days
-    val imageUrl: String = ""
+    val par: Int,
+    val score: Int
 ) {
-
-//    /**
-//     * Determines if the plant should be watered.  Returns true if [since]'s date > date of last
-//     * watering + watering Interval; false otherwise.
-//     */
-//    fun shouldBeWatered(since: Calendar, lastWateringDate: Calendar) =
-//        since > lastWateringDate.apply { add(DAY_OF_YEAR, wateringInterval) }
-
     override fun toString() = name
 }

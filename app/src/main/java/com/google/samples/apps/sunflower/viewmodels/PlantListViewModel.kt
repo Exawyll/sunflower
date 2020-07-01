@@ -33,13 +33,13 @@ class PlantListViewModel internal constructor(
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    val plants: LiveData<List<Plant>> = getSavedGrowZoneNumber().switchMap {
-        if (it == NO_GROW_ZONE) {
-            plantRepository.getPlants()
-        } else {
-            plantRepository.getPlantsWithGrowZoneNumber(it)
-        }
-    }
+//    val plants: LiveData<List<Plant>> = getSavedGrowZoneNumber().switchMap {
+//        if (it == NO_GROW_ZONE) {
+//            plantRepository.getPlants()
+//        } else {
+//            plantRepository.getPlantsWithGrowZoneNumber(it)
+//        }
+//    }
 
     fun setGrowZoneNumber(num: Int) {
         savedStateHandle.set(GROW_ZONE_SAVED_STATE_KEY, num)
