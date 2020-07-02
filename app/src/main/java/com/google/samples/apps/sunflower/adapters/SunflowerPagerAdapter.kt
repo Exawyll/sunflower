@@ -23,6 +23,7 @@ import com.google.samples.apps.sunflower.PlantListFragment
 
 const val MY_GARDEN_PAGE_INDEX = 0
 const val PLANT_LIST_PAGE_INDEX = 1
+const val TEST = 2
 
 class SunflowerPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
@@ -31,7 +32,8 @@ class SunflowerPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment)
      */
     private val tabFragmentsCreators: Map<Int, () -> Fragment> = mapOf(
         MY_GARDEN_PAGE_INDEX to { GardenFragment() },
-        PLANT_LIST_PAGE_INDEX to { PlantListFragment() }
+        PLANT_LIST_PAGE_INDEX to { PlantListFragment() },
+        TEST to { PlantListFragment() }
     )
 
     override fun getItemCount() = tabFragmentsCreators.size
