@@ -21,7 +21,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "holes")
-data class Hole (
+data class Hole(
     @PrimaryKey @ColumnInfo(name = "id") val holeId: String,
     val name: String,
     val description: String,

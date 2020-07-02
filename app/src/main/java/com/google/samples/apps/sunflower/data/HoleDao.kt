@@ -31,7 +31,7 @@ interface HoleDao {
     fun getHoles(): LiveData<List<Hole>>
 
     @Query("SELECT * FROM holes WHERE id = :holeId")
-    fun getHole(plantId: String): LiveData<Hole>
+    fun getHole(holeId: String): LiveData<Hole>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(holes: List<Hole>)
