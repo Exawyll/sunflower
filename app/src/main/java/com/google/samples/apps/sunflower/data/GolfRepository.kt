@@ -25,6 +25,8 @@ class GolfRepository private constructor(private val golfDao: GolfDao) {
 
     fun getGolf(golfId: Long) = golfDao.getGolf(golfId)
 
+    fun getHolesByGolf(golfId: Long) = golfDao.getHolesByGolf(golfId)
+
     companion object {
 
         // For Singleton instantiation

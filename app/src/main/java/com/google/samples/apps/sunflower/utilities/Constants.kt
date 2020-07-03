@@ -19,7 +19,7 @@ package com.google.samples.apps.sunflower.utilities
 /**
  * Constants used throughout the app.
  */
-const val DATABASE_NAME = "sunflower-db-8"
+const val DATABASE_NAME = "sunflower-db-9"
 const val PLANT_DATA_FILENAME = "plants.json"
 const val HOLE_DATA_FILENAME = "holes.json"
 const val GOLF_DATA_FILENAME = "golfs.json"

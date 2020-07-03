@@ -32,6 +32,7 @@ class GolfDetailViewModel(
 
     val previousScoring = scoringRepository.getGolfScoring(golfId)
     val golf = golfRepository.getGolf(golfId)
+    val holes = golfRepository.getHolesByGolf(golfId)
 
     fun addScoreToGolf() {
     }

@@ -37,4 +37,6 @@ data class Hole(
     val name: String,
     val description: String,
     val par: Int
-)
+) {
+    override fun toString() = "$name (par $par)"
+}

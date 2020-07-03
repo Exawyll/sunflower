@@ -17,10 +17,7 @@
 package com.google.samples.apps.sunflower.data
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 /**
  * The Data Access Object for the Golf class.
@@ -32,6 +29,12 @@ interface GolfDao {
 
     @Query("SELECT * FROM golfs WHERE id = :golfId")
     fun getGolf(golfId: Long): LiveData<Golf>
+
+    @Query("""
+        SELECT * FROM holes WHERE id 
+        IN (SELECT DISTINCT(hole_id) FROM golfs WHERE id = :golfId)"""
+    )
+    fun getHolesByGolf(golfId: Long): List<Hole>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(holes: List<Golf>)

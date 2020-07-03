@@ -36,38 +36,19 @@ class HoleAdapter : ListAdapter<Hole, RecyclerView.ViewHolder>(HoleDiffCallback(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val hole = getItem(position)
-//        (holder as HoleViewHolder).bind(hole)
+//        val hole = getItem(position)
+//        (holder as HoleAdapter.HoleViewHolder).bind(hole)
     }
 
     class HoleViewHolder(
         private val binding: ListItemHoleBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        init {
-            binding.setClickListener {
-                binding.hole?.let { hole ->
-                    navigateToHole(hole, it)
-                }
-            }
-        }
 
         private fun navigateToHole(
             hole: Hole,
             view: View
         ) {
-//            val direction =
-//                HomeViewPagerFragmentDirections.actionViewPagerFragmentToHoleDetailFragment(
-//                    hole.holeId
-//                )
-//            view.findNavController().navigate(direction)
         }
-
-//        fun bind(item: Hole) {
-//            binding.apply {
-//                hole = item
-//                executePendingBindings()
-//            }
-//        }
     }
 }
 
