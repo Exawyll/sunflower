@@ -20,13 +20,13 @@ import androidx.room.Embedded
 import androidx.room.Relation
 
 /**
- * This class captures the relationship between a [Hole] and a [Golf], which is
+ * This class captures the relationship between a [Scoring] and a [Hole], which is
  * used by Room to fetch the related entities.
  */
-data class HoleAndGolfs(
+data class HoleAndScoring(
     @Embedded
     val hole: Hole,
 
-    @Relation(parentColumn = "id", entityColumn = "hole_id")
-    val golfs: List<Golf> = emptyList()
+    @Relation(parentColumn = "id", entityColumn = "score_id")
+    val scoring: List<Scoring> = emptyList()
 )

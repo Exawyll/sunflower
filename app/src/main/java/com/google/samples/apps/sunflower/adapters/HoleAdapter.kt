@@ -19,6 +19,7 @@ package com.google.samples.apps.sunflower.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -57,11 +58,11 @@ class HoleAdapter : ListAdapter<Hole, RecyclerView.ViewHolder>(HoleDiffCallback(
             hole: Hole,
             view: View
         ) {
-            val direction =
-                HomeViewPagerFragmentDirections.actionViewPagerFragmentToPlantDetailFragment(
-                    hole.holeId
-                )
-            view.findNavController().navigate(direction)
+//            val direction =
+//                HomeViewPagerFragmentDirections.actionViewPagerFragmentToHoleDetailFragment(
+//                    hole.holeId
+//                )
+//            view.findNavController().navigate(direction)
         }
 
 //        fun bind(item: Hole) {

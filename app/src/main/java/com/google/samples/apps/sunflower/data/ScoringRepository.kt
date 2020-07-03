@@ -16,23 +16,23 @@
 
 package com.google.samples.apps.sunflower.data
 
-import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-
 /**
- * The Data Access Object for the Score class.
+ * Repository module for handling data operations.
  */
-@Dao
-interface ScoreDao {
-    @Query("SELECT * FROM scores")
-    fun getScores(): LiveData<List<Score>>
+class ScoringRepository private constructor(private val scoringDao: ScoringDao) {
 
-    @Query("SELECT * FROM scores WHERE id = :scoreId")
-    fun getScore(scoreId: String): LiveData<Score>
+    fun getScores() = scoringDao.getScores()
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(scores: List<Score>)
+    fun getScore(scoringId: String) = scoringDao.getScore(scoringId)
+
+    companion object {
+
+        // For Singleton instantiation
+        @Volatile private var instance: ScoringRepository? = null
+
+        fun getInstance(scoringDao: ScoringDao) =
+                instance ?: synchronized(this) {
+                    instance ?: ScoringRepository(scoringDao).also { instance = it }
+                }
+    }
 }

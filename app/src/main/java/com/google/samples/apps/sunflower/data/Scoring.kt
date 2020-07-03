@@ -16,17 +16,28 @@
 
 package com.google.samples.apps.sunflower.data
 
-import androidx.room.Embedded
-import androidx.room.Relation
+import androidx.room.*
+import java.util.*
 
-/**
- * This class captures the relationship between a [Score] and a [Hole], which is
- * used by Room to fetch the related entities.
- */
-data class ScoreAndHoles(
-    @Embedded
-    val score: Score,
-
-    @Relation(parentColumn = "id", entityColumn = "score_id")
-    val scores: List<Score> = emptyList()
+@Entity(
+    tableName = "scoring",
+    foreignKeys = [
+        ForeignKey(entity = Hole::class,
+                parentColumns = ["id"], childColumns = ["hole_id"])
+    ],
+    indices = [Index("hole_id")]
 )
+data class Scoring(
+    @ColumnInfo(name = "hole_id") val holeId: String,
+
+    /**
+     * Indicates when the [Score] was played.
+     */
+    @ColumnInfo(name = "hole_date") val holeDate: Calendar = Calendar.getInstance(),
+
+    val score: Int
+) {
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
+    var scoringId: Long = 0
+}

@@ -16,14 +16,23 @@
 
 package com.google.samples.apps.sunflower.data
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import java.util.*
+import androidx.lifecycle.LiveData
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 
-@Entity(tableName = "scores")
-data class Score(
-        @PrimaryKey @ColumnInfo(name = "id") val scoreId: String,
-        val result: Int,
-        @ColumnInfo(name = "score_date") val scoreDate: Calendar = Calendar.getInstance()
-) {}
+/**
+ * The Data Access Object for the Score class.
+ */
+@Dao
+interface ScoringDao {
+    @Query("SELECT * FROM scoring")
+    fun getScores(): LiveData<List<Scoring>>
+
+    @Query("SELECT * FROM scoring WHERE id = :scoringId")
+    fun getScore(scoringId: String): LiveData<Scoring>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(scoring: List<Scoring>)
+}

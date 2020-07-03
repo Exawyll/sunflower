@@ -16,23 +16,17 @@
 
 package com.google.samples.apps.sunflower.data
 
+import androidx.room.Embedded
+import androidx.room.Relation
+
 /**
- * Repository module for handling data operations.
+ * This class captures the relationship between a [Hole] and a [Golf], which is
+ * used by Room to fetch the related entities.
  */
-class ScoreRepository private constructor(private val scoreDao: ScoreDao) {
+data class GolfAndHoles(
+    @Embedded
+    val golf: Golf,
 
-    fun getScores() = scoreDao.getScores()
-
-    fun getScore(scoreId: String) = scoreDao.getScore(scoreId)
-
-    companion object {
-
-        // For Singleton instantiation
-        @Volatile private var instance: ScoreRepository? = null
-
-        fun getInstance(scoreDao: ScoreDao) =
-                instance ?: synchronized(this) {
-                    instance ?: ScoreRepository(scoreDao).also { instance = it }
-                }
-    }
-}
+    @Relation(parentColumn = "id", entityColumn = "hole_id")
+    val holes: List<Hole> = emptyList()
+)
