@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Google LLC
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,12 +20,14 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-//@Entity(tableName = "holes")
-data class Hole (
-//    @PrimaryKey @ColumnInfo(name = "id") val holeId: String,
+@Entity(tableName = "holes")
+data class Hole(
+    @PrimaryKey @ColumnInfo(name = "id") val holeId: String,
     val name: String,
+    val description: String,
     val par: Int,
-    val score: Int
+    val score: Int = 7 // how often the plant should be watered, in days
 ) {
+
     override fun toString() = name
 }

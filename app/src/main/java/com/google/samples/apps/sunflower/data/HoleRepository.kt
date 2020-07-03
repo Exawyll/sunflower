@@ -14,11 +14,25 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.sunflower.utilities
+package com.google.samples.apps.sunflower.data
 
 /**
- * Constants used throughout the app.
+ * Repository module for handling data operations.
  */
-const val DATABASE_NAME = "sunflower-db-3"
-const val PLANT_DATA_FILENAME = "plants.json"
-const val HOLE_DATA_FILENAME = "holes.json"
+class HoleRepository private constructor(private val holeDao: HoleDao) {
+
+    fun getHoles() = holeDao.getHoles()
+
+    fun getHole(holeId: String) = holeDao.getHole(holeId)
+
+    companion object {
+
+        // For Singleton instantiation
+        @Volatile private var instance: HoleRepository? = null
+
+        fun getInstance(holeDao: HoleDao) =
+                instance ?: synchronized(this) {
+                    instance ?: HoleRepository(holeDao).also { instance = it }
+                }
+    }
+}

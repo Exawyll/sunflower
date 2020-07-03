@@ -26,6 +26,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.google.samples.apps.sunflower.adapters.MY_GARDEN_PAGE_INDEX
 import com.google.samples.apps.sunflower.adapters.PLANT_LIST_PAGE_INDEX
 import com.google.samples.apps.sunflower.adapters.SunflowerPagerAdapter
+import com.google.samples.apps.sunflower.adapters.TEST
 import com.google.samples.apps.sunflower.databinding.FragmentViewPagerBinding
 
 class HomeViewPagerFragment : Fragment() {
@@ -56,6 +57,7 @@ class HomeViewPagerFragment : Fragment() {
         return when (position) {
             MY_GARDEN_PAGE_INDEX -> R.drawable.garden_tab_selector
             PLANT_LIST_PAGE_INDEX -> R.drawable.plant_list_tab_selector
+            TEST -> R.drawable.plant_list_tab_selector
             else -> throw IndexOutOfBoundsException()
         }
     }
@@ -64,6 +66,7 @@ class HomeViewPagerFragment : Fragment() {
         return when (position) {
             MY_GARDEN_PAGE_INDEX -> getString(R.string.my_garden_title)
             PLANT_LIST_PAGE_INDEX -> getString(R.string.plant_list_title)
+            TEST -> "test"
             else -> null
         }
     }

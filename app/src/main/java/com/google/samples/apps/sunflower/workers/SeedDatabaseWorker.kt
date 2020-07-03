@@ -24,7 +24,9 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader
 import com.google.samples.apps.sunflower.data.AppDatabase
+import com.google.samples.apps.sunflower.data.Hole
 import com.google.samples.apps.sunflower.data.Plant
+import com.google.samples.apps.sunflower.utilities.HOLE_DATA_FILENAME
 import com.google.samples.apps.sunflower.utilities.PLANT_DATA_FILENAME
 import kotlinx.coroutines.coroutineScope
 
@@ -41,6 +43,17 @@ class SeedDatabaseWorker(
 
                     val database = AppDatabase.getInstance(applicationContext)
                     database.plantDao().insertAll(plantList)
+
+                    Result.success()
+                }
+            }
+            applicationContext.assets.open(HOLE_DATA_FILENAME).use { inputStream ->
+                JsonReader(inputStream.reader()).use { jsonReader ->
+                    val holeType = object : TypeToken<List<Hole>>() {}.type
+                    val holeList: List<Hole> = Gson().fromJson(jsonReader, holeType)
+
+                    val database = AppDatabase.getInstance(applicationContext)
+                    database.holeDao().insertAll(holeList)
 
                     Result.success()
                 }

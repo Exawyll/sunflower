@@ -20,8 +20,10 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import com.google.samples.apps.sunflower.data.AppDatabase
 import com.google.samples.apps.sunflower.data.GardenPlantingRepository
+import com.google.samples.apps.sunflower.data.HoleRepository
 import com.google.samples.apps.sunflower.data.PlantRepository
 import com.google.samples.apps.sunflower.viewmodels.GardenPlantingListViewModelFactory
+import com.google.samples.apps.sunflower.viewmodels.HoleListViewModelFactory
 import com.google.samples.apps.sunflower.viewmodels.PlantDetailViewModelFactory
 import com.google.samples.apps.sunflower.viewmodels.PlantListViewModelFactory
 
@@ -33,6 +35,11 @@ object InjectorUtils {
     private fun getPlantRepository(context: Context): PlantRepository {
         return PlantRepository.getInstance(
                 AppDatabase.getInstance(context.applicationContext).plantDao())
+    }
+
+    private fun getHoleRepository(context: Context): HoleRepository {
+        return HoleRepository.getInstance(
+                AppDatabase.getInstance(context.applicationContext).holeDao())
     }
 
     private fun getGardenPlantingRepository(context: Context): GardenPlantingRepository {
@@ -48,6 +55,10 @@ object InjectorUtils {
 
     fun providePlantListViewModelFactory(fragment: Fragment): PlantListViewModelFactory {
         return PlantListViewModelFactory(getPlantRepository(fragment.requireContext()), fragment)
+    }
+
+    fun provideHoleListViewModelFactory(fragment: Fragment): HoleListViewModelFactory {
+        return HoleListViewModelFactory(getHoleRepository(fragment.requireContext()), fragment)
     }
 
     fun providePlantDetailViewModelFactory(

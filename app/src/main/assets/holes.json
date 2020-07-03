@@ -1,0 +1,23 @@
+[
+  {
+    "holeId": "par3",
+    "name": "Par 3",
+    "description": "",
+    "par": 3,
+    "score": 0
+  },
+  {
+    "holeId": "par4",
+    "name": "Par 4",
+    "description": "",
+    "par": 4,
+    "score": 0
+  },
+  {
+    "holeId": "par5",
+    "name": "Par 5",
+    "description": "",
+    "par": 5,
+    "score": 0
+  }
+]

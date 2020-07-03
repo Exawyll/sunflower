@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google LLC
+ * Copyright 2020 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,11 +14,19 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.sunflower.utilities
+package com.google.samples.apps.sunflower.viewmodels
+
+import androidx.lifecycle.*
+import com.google.samples.apps.sunflower.data.Hole
+import com.google.samples.apps.sunflower.data.HoleRepository
 
 /**
- * Constants used throughout the app.
+ * The ViewModel for [HoleListFragment].
  */
-const val DATABASE_NAME = "sunflower-db-3"
-const val PLANT_DATA_FILENAME = "plants.json"
-const val HOLE_DATA_FILENAME = "holes.json"
+class HoleListViewModel internal constructor(
+    holeRepository: HoleRepository,
+    private val savedStateHandle: SavedStateHandle
+) : ViewModel() {
+
+    val holes: LiveData<List<Hole>> = holeRepository.getHoles()
+}

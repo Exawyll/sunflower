@@ -14,11 +14,25 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.sunflower.utilities
+package com.google.samples.apps.sunflower.data
+
+import androidx.lifecycle.LiveData
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 
 /**
- * Constants used throughout the app.
+ * The Data Access Object for the Hole class.
  */
-const val DATABASE_NAME = "sunflower-db-3"
-const val PLANT_DATA_FILENAME = "plants.json"
-const val HOLE_DATA_FILENAME = "holes.json"
+@Dao
+interface HoleDao {
+    @Query("SELECT * FROM holes ORDER BY name")
+    fun getHoles(): LiveData<List<Hole>>
+
+    @Query("SELECT * FROM holes WHERE id = :holeId")
+    fun getHole(holeId: String): LiveData<Hole>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(holes: List<Hole>)
+}
