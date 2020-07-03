@@ -23,7 +23,7 @@ class GolfRepository private constructor(private val golfDao: GolfDao) {
 
     fun getGolfs() = golfDao.getGolfs()
 
-    fun getGolf(golfId: String) = golfDao.getGolf(golfId)
+    fun getGolf(golfId: Long) = golfDao.getGolf(golfId)
 
     companion object {
 

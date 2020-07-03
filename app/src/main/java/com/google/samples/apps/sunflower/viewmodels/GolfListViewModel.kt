@@ -14,12 +14,19 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.sunflower.utilities
+package com.google.samples.apps.sunflower.viewmodels
+
+import androidx.lifecycle.*
+import com.google.samples.apps.sunflower.data.Golf
+import com.google.samples.apps.sunflower.data.GolfRepository
 
 /**
- * Constants used throughout the app.
+ * The ViewModel for [GolfListFragment].
  */
-const val DATABASE_NAME = "sunflower-db-8"
-const val PLANT_DATA_FILENAME = "plants.json"
-const val HOLE_DATA_FILENAME = "holes.json"
-const val GOLF_DATA_FILENAME = "golfs.json"
+class GolfListViewModel internal constructor(
+    golfRepository: GolfRepository,
+    private val savedStateHandle: SavedStateHandle
+) : ViewModel() {
+
+    val golfs: LiveData<List<Golf>> = golfRepository.getGolfs()
+}

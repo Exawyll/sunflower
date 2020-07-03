@@ -31,7 +31,7 @@ data class Scoring(
     @ColumnInfo(name = "hole_id") val holeId: String,
 
     /**
-     * Indicates when the [Score] was played.
+     * Indicates when the [Scoring] was played.
      */
     @ColumnInfo(name = "hole_date") val holeDate: Calendar = Calendar.getInstance(),
 

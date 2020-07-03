@@ -1,8 +1,8 @@
 {
   "formatVersion": 1,
   "database": {
-    "version": 6,
-    "identityHash": "b0d3a277d25b8e859e9a7a6cb2664a17",
+    "version": 7,
+    "identityHash": "c72e135d866a7917a1b38e57ff3d60f7",
     "entities": [
       {
         "tableName": "garden_plantings",
@@ -115,24 +115,12 @@
       },
       {
         "tableName": "holes",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `score_id` TEXT NOT NULL, `score_date` INTEGER NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `par` INTEGER NOT NULL, PRIMARY KEY(`id`), FOREIGN KEY(`score_id`) REFERENCES `scoring`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `par` INTEGER NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "holeId",
             "columnName": "id",
             "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "scoreId",
-            "columnName": "score_id",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "scoreDate",
-            "columnName": "score_date",
-            "affinity": "INTEGER",
             "notNull": true
           },
           {
@@ -160,29 +148,8 @@
           ],
           "autoGenerate": false
         },
-        "indices": [
-          {
-            "name": "index_holes_score_id",
-            "unique": false,
-            "columnNames": [
-              "score_id"
-            ],
-            "createSql": "CREATE  INDEX `index_holes_score_id` ON `${TABLE_NAME}` (`score_id`)"
-          }
-        ],
-        "foreignKeys": [
-          {
-            "table": "scoring",
-            "onDelete": "NO ACTION",
-            "onUpdate": "NO ACTION",
-            "columns": [
-              "score_id"
-            ],
-            "referencedColumns": [
-              "id"
-            ]
-          }
-        ]
+        "indices": [],
+        "foreignKeys": []
       },
       {
         "tableName": "golfs",
@@ -312,7 +279,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b0d3a277d25b8e859e9a7a6cb2664a17')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c72e135d866a7917a1b38e57ff3d60f7')"
     ]
   }
 }

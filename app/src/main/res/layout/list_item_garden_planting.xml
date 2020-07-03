@@ -117,19 +117,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/watered_date_header" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/water_interval"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="0dp"-->
-<!--                android:layout_marginBottom="@dimen/margin_normal"-->
-<!--                android:text="@{@plurals/watering_next(viewModel.wateringInterval, viewModel.wateringInterval)}"-->
-<!--                android:gravity="center_horizontal"-->
-<!--                android:textAppearance="?attr/textAppearanceSubtitle2"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/water_date"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"/>-->
+            <TextView
+                android:id="@+id/water_interval"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="@dimen/margin_normal"
+                android:text="@{@plurals/watering_next(viewModel.wateringInterval, viewModel.wateringInterval)}"
+                android:gravity="center_horizontal"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/water_date"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

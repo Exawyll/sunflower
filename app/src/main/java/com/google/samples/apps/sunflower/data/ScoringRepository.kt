@@ -25,6 +25,10 @@ class ScoringRepository private constructor(private val scoringDao: ScoringDao) 
 
     fun getScore(scoringId: String) = scoringDao.getScore(scoringId)
 
+    fun getHoleScoring(holeId: String) = scoringDao.getHoleScoring(holeId)
+
+    fun getGolfScoring(golfId: Long) = scoringDao.getGolfScoring(golfId)
+
     companion object {
 
         // For Singleton instantiation

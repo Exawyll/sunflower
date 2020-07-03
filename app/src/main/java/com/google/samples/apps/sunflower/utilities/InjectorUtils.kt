@@ -18,14 +18,8 @@ package com.google.samples.apps.sunflower.utilities
 
 import android.content.Context
 import androidx.fragment.app.Fragment
-import com.google.samples.apps.sunflower.data.AppDatabase
-import com.google.samples.apps.sunflower.data.GardenPlantingRepository
-import com.google.samples.apps.sunflower.data.HoleRepository
-import com.google.samples.apps.sunflower.data.PlantRepository
-import com.google.samples.apps.sunflower.viewmodels.GardenPlantingListViewModelFactory
-import com.google.samples.apps.sunflower.viewmodels.HoleListViewModelFactory
-import com.google.samples.apps.sunflower.viewmodels.PlantDetailViewModelFactory
-import com.google.samples.apps.sunflower.viewmodels.PlantListViewModelFactory
+import com.google.samples.apps.sunflower.data.*
+import com.google.samples.apps.sunflower.viewmodels.*
 
 /**
  * Static methods used to inject classes needed for various Activities and Fragments.
@@ -47,6 +41,16 @@ object InjectorUtils {
                 AppDatabase.getInstance(context.applicationContext).gardenPlantingDao())
     }
 
+    private fun getGolfRepository(context: Context): GolfRepository {
+        return GolfRepository.getInstance(
+                AppDatabase.getInstance(context.applicationContext).golfDao())
+    }
+
+    private fun getScoringRepository(context: Context): ScoringRepository {
+        return ScoringRepository.getInstance(
+                AppDatabase.getInstance(context.applicationContext).scoringDao())
+    }
+
     fun provideGardenPlantingListViewModelFactory(
         context: Context
     ): GardenPlantingListViewModelFactory {
@@ -61,11 +65,23 @@ object InjectorUtils {
         return HoleListViewModelFactory(getHoleRepository(fragment.requireContext()), fragment)
     }
 
+    fun provideGolfListViewModelFactory(fragment: Fragment): GolfListViewModelFactory {
+        return GolfListViewModelFactory(getGolfRepository(fragment.requireContext()), fragment)
+    }
+
     fun providePlantDetailViewModelFactory(
         context: Context,
         plantId: String
     ): PlantDetailViewModelFactory {
         return PlantDetailViewModelFactory(getPlantRepository(context),
                 getGardenPlantingRepository(context), plantId)
+    }
+
+    fun provideGolfDetailViewModelFactory(
+        context: Context,
+        golfId: Long
+    ): GolfDetailViewModelFactory {
+        return GolfDetailViewModelFactory(getGolfRepository(context),
+                getScoringRepository(context), golfId)
     }
 }

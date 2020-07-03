@@ -31,7 +31,7 @@ import androidx.room.PrimaryKey
     indices = [Index("hole_id")]
 )
 data class Golf(
-    @ColumnInfo(name = "hole_id") val holeId: String,
+    @ColumnInfo(name = "hole_id") val holeId: String?,
     val name: String,
     val description: String,
     val imageUrl: String = ""

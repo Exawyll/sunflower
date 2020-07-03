@@ -27,18 +27,14 @@ import java.util.*
     tableName = "holes",
     foreignKeys = [
     ForeignKey(entity = com.google.samples.apps.sunflower.data.Scoring::class,
-            parentColumns = ["id"], childColumns = ["score_id"])
+            parentColumns = ["id"], childColumns = ["scoring_id"])
     ],
-        indices = [Index("score_id")]
+        indices = [Index("scoring_id")]
 )
 data class Hole(
-    @ColumnInfo(name = "score_id") val scoreId: String,
-    @ColumnInfo(name = "score_date") val scoreDate: Calendar = Calendar.getInstance(),
+    @PrimaryKey @ColumnInfo(name = "id") val holeId: String,
+    @ColumnInfo(name = "scoring_id") val scoringId: Long?,
     val name: String,
     val description: String,
     val par: Int
-) {
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
-    var holeId: Long = 0
-}
+)

@@ -31,7 +31,7 @@ interface GolfDao {
     fun getGolfs(): LiveData<List<Golf>>
 
     @Query("SELECT * FROM golfs WHERE id = :golfId")
-    fun getGolf(golfId: String): LiveData<Golf>
+    fun getGolf(golfId: Long): LiveData<Golf>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(holes: List<Golf>)

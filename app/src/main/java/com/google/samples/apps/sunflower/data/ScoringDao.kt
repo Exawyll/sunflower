@@ -30,6 +30,14 @@ interface ScoringDao {
     @Query("SELECT * FROM scoring")
     fun getScores(): LiveData<List<Scoring>>
 
+    @Query("""SELECT * FROM scoring 
+        WHERE hole_id IN (SELECT DISTINCT(hole_id) 
+        FROM golfs WHERE id = :golfId)""")
+    fun getGolfScoring(golfId: Long): LiveData<List<Scoring>>
+
+    @Query("SELECT * FROM scoring WHERE hole_id = :holeId")
+    fun getHoleScoring(holeId: String): LiveData<List<Scoring>>
+
     @Query("SELECT * FROM scoring WHERE id = :scoringId")
     fun getScore(scoringId: String): LiveData<Scoring>
 

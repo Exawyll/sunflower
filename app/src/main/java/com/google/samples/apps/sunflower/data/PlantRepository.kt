@@ -25,8 +25,8 @@ class PlantRepository private constructor(private val plantDao: PlantDao) {
 
     fun getPlant(plantId: String) = plantDao.getPlant(plantId)
 
-//    fun getPlantsWithGrowZoneNumber(growZoneNumber: Int) =
-//            plantDao.getPlantsWithGrowZoneNumber(growZoneNumber)
+    fun getPlantsWithGrowZoneNumber(growZoneNumber: Int) =
+            plantDao.getPlantsWithGrowZoneNumber(growZoneNumber)
 
     companion object {
 

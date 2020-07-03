@@ -91,4 +91,5 @@ dependencies {
     androidTestImplementation "androidx.work:work-testing:$rootProject.workVersion"
     androidTestImplementation "com.google.truth:truth:$rootProject.truthVersion"
     testImplementation "junit:junit:$rootProject.junitVersion"
+    compileOnly 'org.glassfish:javax.annotation:10.0-b28'
 }

@@ -19,12 +19,9 @@ package com.google.samples.apps.sunflower.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.NavDirections
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.google.samples.apps.sunflower.HomeViewPagerFragmentDirections
 import com.google.samples.apps.sunflower.data.Hole
 import com.google.samples.apps.sunflower.databinding.ListItemHoleBinding
 

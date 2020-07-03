@@ -26,15 +26,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
-import com.google.samples.apps.sunflower.adapters.PlantAdapter
-import com.google.samples.apps.sunflower.databinding.FragmentPlantListBinding
+import com.google.samples.apps.sunflower.adapters.GolfAdapter
+import com.google.samples.apps.sunflower.databinding.FragmentGolfListBinding
 import com.google.samples.apps.sunflower.utilities.InjectorUtils
-import com.google.samples.apps.sunflower.viewmodels.PlantListViewModel
+import com.google.samples.apps.sunflower.viewmodels.GolfListViewModel
 
-class PlantListFragment : Fragment() {
+class GolfListFragment : Fragment() {
 
-    private val viewModel: PlantListViewModel by viewModels {
-        InjectorUtils.providePlantListViewModelFactory(this)
+    private val viewModel: GolfListViewModel by viewModels {
+        InjectorUtils.provideGolfListViewModelFactory(this)
     }
 
     override fun onCreateView(
@@ -42,11 +42,11 @@ class PlantListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentPlantListBinding.inflate(inflater, container, false)
+        val binding = FragmentGolfListBinding.inflate(inflater, container, false)
         context ?: return binding.root
 
-        val adapter = PlantAdapter()
-        binding.plantList.adapter = adapter
+        val adapter = GolfAdapter()
+        binding.golfList.adapter = adapter
         subscribeUi(adapter)
 
         setHasOptionsMenu(true)
@@ -54,7 +54,7 @@ class PlantListFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_plant_list, menu)
+        inflater.inflate(R.menu.menu_golf_list, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -67,19 +67,12 @@ class PlantListFragment : Fragment() {
         }
     }
 
-    private fun subscribeUi(adapter: PlantAdapter) {
-        viewModel.plants.observe(viewLifecycleOwner) { plants ->
-            adapter.submitList(plants)
+    private fun subscribeUi(adapter: GolfAdapter) {
+        viewModel.golfs.observe(viewLifecycleOwner) { golfs ->
+            adapter.submitList(golfs)
         }
     }
 
     private fun updateData() {
-        with(viewModel) {
-            if (isFiltered()) {
-                clearGrowZoneNumber()
-            } else {
-                setGrowZoneNumber(9)
-            }
-        }
     }
 }
