@@ -16,17 +16,17 @@
 
 package com.google.samples.apps.sunflower.data
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.Embedded
+import androidx.room.Relation
 
-@Entity(tableName = "holes")
-data class Hole(
-    @PrimaryKey @ColumnInfo(name = "id") val holeId: String,
-    val name: String,
-    val description: String,
-    val par: Int
-) {
+/**
+ * This class captures the relationship between a [Score] and a [Hole], which is
+ * used by Room to fetch the related entities.
+ */
+data class ScoreAndHoles(
+    @Embedded
+    val score: Score,
 
-    override fun toString() = name
-}
+    @Relation(parentColumn = "id", entityColumn = "score_id")
+    val scores: List<Score> = emptyList()
+)

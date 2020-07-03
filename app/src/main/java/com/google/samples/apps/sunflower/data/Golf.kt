@@ -20,12 +20,11 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "holes")
-data class Hole(
-    @PrimaryKey @ColumnInfo(name = "id") val holeId: String,
+@Entity(tableName = "golfs")
+data class Golf(
+    @PrimaryKey @ColumnInfo(name = "id") val golfId: String,
     val name: String,
-    val description: String,
-    val par: Int
+    val description: String
 ) {
 
     override fun toString() = name

@@ -16,17 +16,23 @@
 
 package com.google.samples.apps.sunflower.data
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.lifecycle.LiveData
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 
-@Entity(tableName = "holes")
-data class Hole(
-    @PrimaryKey @ColumnInfo(name = "id") val holeId: String,
-    val name: String,
-    val description: String,
-    val par: Int
-) {
+/**
+ * The Data Access Object for the Score class.
+ */
+@Dao
+interface ScoreDao {
+    @Query("SELECT * FROM scores")
+    fun getScores(): LiveData<List<Score>>
 
-    override fun toString() = name
+    @Query("SELECT * FROM scores WHERE id = :scoreId")
+    fun getScore(scoreId: String): LiveData<Score>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(scores: List<Score>)
 }

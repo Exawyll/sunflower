@@ -16,17 +16,23 @@
 
 package com.google.samples.apps.sunflower.data
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+/**
+ * Repository module for handling data operations.
+ */
+class ScoreRepository private constructor(private val scoreDao: ScoreDao) {
 
-@Entity(tableName = "holes")
-data class Hole(
-    @PrimaryKey @ColumnInfo(name = "id") val holeId: String,
-    val name: String,
-    val description: String,
-    val par: Int
-) {
+    fun getScores() = scoreDao.getScores()
 
-    override fun toString() = name
+    fun getScore(scoreId: String) = scoreDao.getScore(scoreId)
+
+    companion object {
+
+        // For Singleton instantiation
+        @Volatile private var instance: ScoreRepository? = null
+
+        fun getInstance(scoreDao: ScoreDao) =
+                instance ?: synchronized(this) {
+                    instance ?: ScoreRepository(scoreDao).also { instance = it }
+                }
+    }
 }

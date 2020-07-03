@@ -30,13 +30,15 @@ import com.google.samples.apps.sunflower.workers.SeedDatabaseWorker
 /**
  * The Room database for this app
  */
-@Database(entities = [GardenPlanting::class, Plant::class, Hole::class],
-    version = 3, exportSchema = true)
+@Database(entities = [GardenPlanting::class, Plant::class, Hole::class, Golf::class, Score::class],
+    version = 5, exportSchema = true)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun gardenPlantingDao(): GardenPlantingDao
     abstract fun plantDao(): PlantDao
     abstract fun holeDao(): HoleDao
+    abstract fun golfDao(): GolfDao
+    abstract fun scoreDao(): ScoreDao
 
     companion object {
 
@@ -60,7 +62,7 @@ abstract class AppDatabase : RoomDatabase() {
                             WorkManager.getInstance(context).enqueue(request)
                         }
                     })
-//                    .fallbackToDestructiveMigration()
+                    .fallbackToDestructiveMigration()
                     .build()
         }
     }

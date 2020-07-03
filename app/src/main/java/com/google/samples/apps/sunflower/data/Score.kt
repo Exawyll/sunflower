@@ -19,14 +19,11 @@ package com.google.samples.apps.sunflower.data
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.*
 
-@Entity(tableName = "holes")
-data class Hole(
-    @PrimaryKey @ColumnInfo(name = "id") val holeId: String,
-    val name: String,
-    val description: String,
-    val par: Int
-) {
-
-    override fun toString() = name
-}
+@Entity(tableName = "scores")
+data class Score(
+        @PrimaryKey @ColumnInfo(name = "id") val scoreId: String,
+        val result: Int,
+        @ColumnInfo(name = "score_date") val scoreDate: Calendar = Calendar.getInstance()
+) {}
