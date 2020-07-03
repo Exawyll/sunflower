@@ -23,7 +23,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
 /**
- * The Data Access Object for the Plant class.
+ * The Data Access Object for the Hole class.
  */
 @Dao
 interface HoleDao {
