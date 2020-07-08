@@ -21,16 +21,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TableLayout
+import android.widget.TableRow
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.app.ShareCompat
 import androidx.core.widget.NestedScrollView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.observe
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.samples.apps.sunflower.adapters.HoleAdapter
 import com.google.samples.apps.sunflower.data.Golf
+import com.google.samples.apps.sunflower.data.Hole
 import com.google.samples.apps.sunflower.databinding.FragmentGolfDetailBinding
 import com.google.samples.apps.sunflower.utilities.InjectorUtils
 import com.google.samples.apps.sunflower.viewmodels.GolfDetailViewModel
@@ -51,6 +58,7 @@ class GolfDetailFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val binding = DataBindingUtil.inflate<FragmentGolfDetailBinding>(
             inflater, R.layout.fragment_golf_detail, container, false
         ).apply {
@@ -61,6 +69,44 @@ class GolfDetailFragment : Fragment() {
                     TODO("Not yet implemented")
                 }
             }
+
+
+            //TODO: Get table declaration clean
+//            val ROWS = 10
+//            val COLUMNS = 5
+//            val tableLayout by lazy { TableLayout(requireActivity()) }
+//
+//            textView.text = "ROWS : $ROWS COLUMNS: $COLUMNS"
+//
+//            val lp = TableLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+//                    ViewGroup.LayoutParams.MATCH_PARENT)
+//            tableLayout.apply {
+//                layoutParams = lp
+//                isShrinkAllColumns = true
+//            }
+//
+//
+//
+//
+//            for (i in 0 until ROWS) {
+//
+//                val row = TableRow(requireActivity())
+//                row.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+//                        ViewGroup.LayoutParams.WRAP_CONTENT)
+//
+//                for (j in 0 until COLUMNS) {
+//
+//                    val button = Button(requireActivity())
+//                    button.apply {
+//                        layoutParams = TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
+//                                TableRow.LayoutParams.WRAP_CONTENT)
+//                        text = "R $i C $j"
+//                    }
+//                    row.addView(button)
+//                }
+//                tableLayout.addView(row)
+//            }
+//            linearLayout.addView(tableLayout)
 
             var isToolbarShown = false
 
@@ -100,6 +146,13 @@ class GolfDetailFragment : Fragment() {
                 }
             }
         }
+
+        val adapter = HoleAdapter()
+        binding.holeList.adapter = adapter
+        golfDetailViewModel.holes.observe(viewLifecycleOwner) { holes ->
+            adapter.submitList(holes)
+        }
+
         setHasOptionsMenu(true)
 
         return binding.root

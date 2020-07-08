@@ -30,11 +30,9 @@ interface GolfDao {
     @Query("SELECT * FROM golfs WHERE id = :golfId")
     fun getGolf(golfId: Long): LiveData<Golf>
 
-    @Query("""
-        SELECT * FROM holes WHERE id 
-        IN (SELECT DISTINCT(hole_id) FROM golfs WHERE id = :golfId)"""
-    )
-    fun getHolesByGolf(golfId: Long): List<Hole>
+    @Transaction
+    @Query("SELECT * FROM holes WHERE golf_id = :golfId")
+    fun getHolesByGolf(golfId: Long): LiveData<List<Hole>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(holes: List<Golf>)

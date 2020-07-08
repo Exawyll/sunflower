@@ -25,6 +25,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.google.samples.apps.sunflower.utilities.DATABASE_NAME
+import com.google.samples.apps.sunflower.utilities.VERSION_DB
 import com.google.samples.apps.sunflower.workers.SeedDatabaseWorker
 
 /**
@@ -32,7 +33,7 @@ import com.google.samples.apps.sunflower.workers.SeedDatabaseWorker
  */
 @Database(entities = [GardenPlanting::class, Plant::class, Hole::class, Golf::class,
     Scoring::class],
-    version = 9, exportSchema = true)
+    version = VERSION_DB, exportSchema = true)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun gardenPlantingDao(): GardenPlantingDao

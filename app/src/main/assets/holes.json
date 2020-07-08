@@ -1,18 +1,21 @@
 [
   {
     "holeId": "par3",
+    "golfId": 0,
     "name": "Trou 1",
     "description": "",
     "par": 3
   },
   {
     "holeId": "par4",
+    "golfId": 0,
     "name": "Trou 2",
     "description": "",
     "par": 4
   },
   {
     "holeId": "par5",
+    "golfId": 0,
     "name": "Trou 3",
     "description": "",
     "par": 5

@@ -1,27 +1,8 @@
 [
   {
+    "golfId": 0,
     "name": "Cap Malo",
     "description":  "",
-    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSmSlt6A2wOdqeWCcknQzyIxrg3DxTWNplF3A&usqp=CAU",
-    "hole_id": [
-      {
-        "holeId": "par3",
-        "name": "Trou 1",
-        "description": "",
-        "par": 3
-      },
-      {
-        "holeId": "par4",
-        "name": "Trou 2",
-        "description": "",
-        "par": 4
-      },
-      {
-        "holeId": "par5",
-        "name": "Trou 3",
-        "description": "",
-        "par": 5
-      }
-    ]
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSmSlt6A2wOdqeWCcknQzyIxrg3DxTWNplF3A&usqp=CAU"
   }
 ]

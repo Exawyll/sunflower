@@ -18,25 +18,14 @@ package com.google.samples.apps.sunflower.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.Index
 import androidx.room.PrimaryKey
 
 @Entity(
-    tableName = "golfs",
-    foreignKeys = [
-        ForeignKey(entity = com.google.samples.apps.sunflower.data.Hole::class,
-        parentColumns = ["id"], childColumns = ["hole_id"])
-    ],
-    indices = [Index("hole_id")]
+    tableName = "golfs"
 )
 data class Golf(
-    @ColumnInfo(name = "hole_id") val holeId: String?,
+    @PrimaryKey @ColumnInfo(name = "id") var golfId: Long,
     val name: String,
     val description: String,
     val imageUrl: String = ""
-) {
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
-    var golfId: Long = 0
-}
+)

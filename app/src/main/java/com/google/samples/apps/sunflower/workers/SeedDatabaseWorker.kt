@@ -38,13 +38,13 @@ class SeedDatabaseWorker(
 ) : CoroutineWorker(context, workerParams) {
     override suspend fun doWork(): Result = coroutineScope {
         try {
-            applicationContext.assets.open(PLANT_DATA_FILENAME).use { inputStream ->
+            applicationContext.assets.open(GOLF_DATA_FILENAME).use { inputStream ->
                 JsonReader(inputStream.reader()).use { jsonReader ->
-                    val plantType = object : TypeToken<List<Plant>>() {}.type
-                    val plantList: List<Plant> = Gson().fromJson(jsonReader, plantType)
+                    val golfType = object : TypeToken<List<Golf>>() {}.type
+                    val golfList: List<Golf> = Gson().fromJson(jsonReader, golfType)
 
                     val database = AppDatabase.getInstance(applicationContext)
-                    database.plantDao().insertAll(plantList)
+                    database.golfDao().insertAll(golfList)
 
                     Result.success()
                 }
@@ -56,17 +56,6 @@ class SeedDatabaseWorker(
 
                     val database = AppDatabase.getInstance(applicationContext)
                     database.holeDao().insertAll(holeList)
-
-                    Result.success()
-                }
-            }
-            applicationContext.assets.open(GOLF_DATA_FILENAME).use { inputStream ->
-                JsonReader(inputStream.reader()).use { jsonReader ->
-                    val golfType = object : TypeToken<List<Golf>>() {}.type
-                    val golfList: List<Golf> = Gson().fromJson(jsonReader, golfType)
-
-                    val database = AppDatabase.getInstance(applicationContext)
-                    database.golfDao().insertAll(golfList)
 
                     Result.success()
                 }

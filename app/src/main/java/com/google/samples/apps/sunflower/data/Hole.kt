@@ -26,14 +26,14 @@ import java.util.*
 @Entity(
     tableName = "holes",
     foreignKeys = [
-    ForeignKey(entity = com.google.samples.apps.sunflower.data.Scoring::class,
-            parentColumns = ["id"], childColumns = ["scoring_id"])
+    ForeignKey(entity = com.google.samples.apps.sunflower.data.Golf::class,
+            parentColumns = ["id"], childColumns = ["golf_id"])
     ],
-        indices = [Index("scoring_id")]
+        indices = [Index("golf_id")]
 )
 data class Hole(
     @PrimaryKey @ColumnInfo(name = "id") val holeId: String,
-    @ColumnInfo(name = "scoring_id") val scoringId: Long?,
+    @ColumnInfo(name = "golf_id") val golfId: Long,
     val name: String,
     val description: String,
     val par: Int

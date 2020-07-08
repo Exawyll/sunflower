@@ -33,14 +33,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_normal"
-            android:layout_marginTop="@dimen/margin_normal"
-            android:text="@{hole.toString()}"
-            android:textAppearance="?attr/textAppearanceListItem"
             android:gravity="center_horizontal"
+            android:text="@{hole.toString()}"
+            android:textAlignment="viewStart"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:text="Tomato"/>
+            tools:text="Tomato" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.samples.apps.sunflower.data.Hole
+import com.google.samples.apps.sunflower.data.Plant
 import com.google.samples.apps.sunflower.databinding.ListItemHoleBinding
 
 /**
@@ -36,8 +37,8 @@ class HoleAdapter : ListAdapter<Hole, RecyclerView.ViewHolder>(HoleDiffCallback(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-//        val hole = getItem(position)
-//        (holder as HoleAdapter.HoleViewHolder).bind(hole)
+        val hole = getItem(position)
+        (holder as HoleAdapter.HoleViewHolder).bind(hole)
     }
 
     class HoleViewHolder(
@@ -48,6 +49,13 @@ class HoleAdapter : ListAdapter<Hole, RecyclerView.ViewHolder>(HoleDiffCallback(
             hole: Hole,
             view: View
         ) {
+        }
+
+        fun bind(item: Hole) {
+            binding.apply {
+                hole = item
+                executePendingBindings()
+            }
         }
     }
 }

@@ -20,6 +20,7 @@
 
     <data>
         <import type="com.google.samples.apps.sunflower.data.Golf"/>
+        <import type="com.google.samples.apps.sunflower.data.Hole"/>
         <variable
             name="viewModel"
             type="com.google.samples.apps.sunflower.viewmodels.GolfDetailViewModel" />
@@ -95,8 +96,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/margin_normal">
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/golf_detail_name"
@@ -116,33 +116,61 @@
                     android:id="@+id/golf_description"
                     style="?android:attr/textAppearanceMedium"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/margin_small"
                     android:layout_marginTop="@dimen/margin_small"
                     android:layout_marginEnd="@dimen/margin_small"
                     android:textIsSelectable="true"
-                    android:minHeight="@dimen/plant_description_min_height"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/golf_detail_name"
                     app:renderHtml="@{viewModel.golf.description}"
                     tools:text="Details about the plant" />
 
-                <TextView
-                    android:id="@+id/golf_hole"
+                <!--                <FrameLayout-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="match_parent"-->
+                <!--                    app:layout_constraintBottom_toBottomOf="parent">-->
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/hole_list"
                     style="?android:attr/textAppearanceMedium"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_small"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:layout_marginEnd="@dimen/margin_small"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:clipToPadding="false"
+                    android:isScrollContainer="false"
                     android:textIsSelectable="true"
-                    android:minHeight="@dimen/plant_description_min_height"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constrainedHeight="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/golf_detail_name"
-                    app:renderHtml="@{viewModel.golf.holeId}"
-                    tools:text="Details about the plant" />
+                    app:layout_constraintTop_toBottomOf="@id/golf_description"
+                    app:spanCount="@integer/grid_columns"
+                    tools:context="com.google.samples.apps.sunflower.GardenActivity"
+                    tools:ignore="MissingConstraints"
+                    tools:listitem="@layout/list_item_hole" />
+
+                <!--                </FrameLayout>-->
+
+                <!--                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+                <!--                    android:id="@+id/linearLayout"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="match_parent"-->
+                <!--                    android:orientation="vertical">-->
+                <!--                    <TextView-->
+                <!--                        android:id="@+id/textView"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginStart="@dimen/margin_small"-->
+                <!--                        android:layout_marginTop="@dimen/margin_small"-->
+                <!--                        android:layout_marginEnd="@dimen/margin_small"-->
+                <!--                        android:textIsSelectable="true"-->
+                <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+                <!--                        app:layout_constraintStart_toStartOf="parent"-->
+                <!--                        app:layout_constraintTop_toBottomOf="@id/golf_detail_name"-->
+                <!--                        android:layout_width="1dp"-->
+                <!--                        tools:ignore="Details about the Golf" />-->
+                <!--                </LinearLayout>-->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
