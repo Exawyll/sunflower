@@ -22,9 +22,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
+import com.google.samples.apps.sunflower.GolfDetailFragment
 import com.google.samples.apps.sunflower.data.Hole
 import com.google.samples.apps.sunflower.data.Plant
 import com.google.samples.apps.sunflower.databinding.ListItemHoleBinding
+import kotlinx.android.synthetic.main.list_item_hole.view.*
 
 /**
  * Adapter for the [RecyclerView] in [HoleListFragment].
@@ -44,11 +47,17 @@ class HoleAdapter : ListAdapter<Hole, RecyclerView.ViewHolder>(HoleDiffCallback(
     class HoleViewHolder(
         private val binding: ListItemHoleBinding
     ) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.setClickListener { view ->
+                binding.hole?.holeId?.let { holeId ->
+                    display(holeId, view)
+                }
+            }
+        }
 
-        private fun navigateToHole(
-            hole: Hole,
-            view: View
-        ) {
+        fun display(holeId: String, view: View) {
+            Snackbar.make(binding.root, "You clicked on hole : ${holeId}", Snackbar.LENGTH_LONG)
+                    .show()
         }
 
         fun bind(item: Hole) {
@@ -57,6 +66,8 @@ class HoleAdapter : ListAdapter<Hole, RecyclerView.ViewHolder>(HoleDiffCallback(
                 executePendingBindings()
             }
         }
+
+
     }
 }
 

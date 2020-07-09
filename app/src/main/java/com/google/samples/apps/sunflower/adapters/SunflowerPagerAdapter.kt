@@ -22,9 +22,8 @@ import com.google.samples.apps.sunflower.GardenFragment
 import com.google.samples.apps.sunflower.GolfListFragment
 import com.google.samples.apps.sunflower.HoleListFragment
 
-const val MY_GARDEN_PAGE_INDEX = 0
+const val MY_GOLFS_PAGE_INDEX = 0
 const val PLANT_LIST_PAGE_INDEX = 1
-const val TEST = 2
 
 class SunflowerPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
@@ -32,9 +31,8 @@ class SunflowerPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment)
      * Mapping of the ViewPager page indexes to their respective Fragments
      */
     private val tabFragmentsCreators: Map<Int, () -> Fragment> = mapOf(
-        MY_GARDEN_PAGE_INDEX to { GardenFragment() },
-        PLANT_LIST_PAGE_INDEX to { GolfListFragment() },
-        TEST to { HoleListFragment() }
+        MY_GOLFS_PAGE_INDEX to { GolfListFragment() },
+        PLANT_LIST_PAGE_INDEX to { HoleListFragment() }
     )
 
     override fun getItemCount() = tabFragmentsCreators.size

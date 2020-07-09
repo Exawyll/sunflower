@@ -21,48 +21,25 @@
     <data>
         <variable
             name="hole"
-            type="com.google.samples.apps.sunflower.data.Hole"/>
-        <variable
-            name="clickListener"
-            type="android.view.View.OnClickListener"/>
+            type="com.google.samples.apps.sunflower.data.Scoring"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
+        <EditText
             android:id="@+id/hole_item_title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="@{hole.toString()}"
-            android:textAlignment="viewStart"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:gravity="center_horizontal"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textStyle="bold"
-            app:flow_horizontalAlign="start"
-            app:layout_constraintBottom_toBottomOf="@id/fab"
-            app:layout_constraintEnd_toStartOf="@+id/fab"
-            app:layout_constraintHorizontal_bias="0.264"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="Tomato" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            style="@style/Widget.MaterialComponents.FloatingActionButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/fab_margin"
-            android:layout_marginBottom="16dp"
-            android:onClick="@{clickListener}"
-            android:tint="@android:color/white"
-            app:layout_anchorGravity="right|end"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.994"
             app:layout_constraintStart_toStartOf="parent"
-            app:shapeAppearance="@style/ShapeAppearance.Sunflower.FAB"
-            app:srcCompat="@drawable/ic_plus" />
+            tools:text="Tomato" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
