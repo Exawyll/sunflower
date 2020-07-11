@@ -23,8 +23,8 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.samples.apps.sunflower.adapters.HOLE_LIST_PAGE_INDEX
 import com.google.samples.apps.sunflower.adapters.MY_GOLFS_PAGE_INDEX
-import com.google.samples.apps.sunflower.adapters.PLANT_LIST_PAGE_INDEX
 import com.google.samples.apps.sunflower.adapters.SunflowerPagerAdapter
 import com.google.samples.apps.sunflower.databinding.FragmentViewPagerBinding
 
@@ -55,7 +55,7 @@ class HomeViewPagerFragment : Fragment() {
     private fun getTabIcon(position: Int): Int {
         return when (position) {
             MY_GOLFS_PAGE_INDEX -> R.drawable.golf_tab_selector
-            PLANT_LIST_PAGE_INDEX -> R.drawable.plant_list_tab_selector
+            HOLE_LIST_PAGE_INDEX -> R.drawable.hole_tab_selector
             else -> throw IndexOutOfBoundsException()
         }
     }
@@ -63,7 +63,7 @@ class HomeViewPagerFragment : Fragment() {
     private fun getTabTitle(position: Int): String? {
         return when (position) {
             MY_GOLFS_PAGE_INDEX -> getString(R.string.my_golf_title)
-            PLANT_LIST_PAGE_INDEX -> getString(R.string.plant_list_title)
+            HOLE_LIST_PAGE_INDEX -> getString(R.string.hole_list_title)
             else -> null
         }
     }

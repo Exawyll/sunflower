@@ -41,6 +41,9 @@ interface ScoringDao {
     @Query("SELECT * FROM scoring WHERE id = :scoringId")
     fun getScore(scoringId: String): LiveData<Scoring>
 
+    @Insert
+    suspend fun insertScoring(scoring: Scoring): Long
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(scoring: List<Scoring>)
 }

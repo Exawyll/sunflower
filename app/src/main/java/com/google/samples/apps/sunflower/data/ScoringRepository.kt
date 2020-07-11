@@ -16,10 +16,17 @@
 
 package com.google.samples.apps.sunflower.data
 
+import java.util.*
+
 /**
  * Repository module for handling data operations.
  */
 class ScoringRepository private constructor(private val scoringDao: ScoringDao) {
+
+    suspend fun createScoring(holeId: String, score: Int) {
+        val scoring = Scoring(holeId, Calendar.getInstance(), score)
+        scoringDao.insertScoring(scoring)
+    }
 
     fun getScores() = scoringDao.getScores()
 

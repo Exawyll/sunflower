@@ -16,9 +16,13 @@
 
 package com.google.samples.apps.sunflower.adapters
 
+import android.app.AlertDialog
+import android.content.DialogInterface
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -26,6 +30,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.samples.apps.sunflower.GolfDetailFragment
 import com.google.samples.apps.sunflower.data.Hole
 import com.google.samples.apps.sunflower.data.Plant
+import com.google.samples.apps.sunflower.data.Scoring
 import com.google.samples.apps.sunflower.databinding.ListItemHoleBinding
 import kotlinx.android.synthetic.main.list_item_hole.view.*
 
@@ -41,7 +46,7 @@ class HoleAdapter : ListAdapter<Hole, RecyclerView.ViewHolder>(HoleDiffCallback(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val hole = getItem(position)
-        (holder as HoleAdapter.HoleViewHolder).bind(hole)
+        (holder as HoleViewHolder).bind(hole)
     }
 
     class HoleViewHolder(
@@ -50,14 +55,18 @@ class HoleAdapter : ListAdapter<Hole, RecyclerView.ViewHolder>(HoleDiffCallback(
         init {
             binding.setClickListener { view ->
                 binding.hole?.holeId?.let { holeId ->
-                    display(holeId, view)
+                    addScore(holeId, view)
                 }
             }
         }
 
-        fun display(holeId: String, view: View) {
+        fun addScore(holeId: String, view: View) {
             Snackbar.make(binding.root, "You clicked on hole : ${holeId}", Snackbar.LENGTH_LONG)
                     .show()
+        }
+
+        fun getScore() {
+
         }
 
         fun bind(item: Hole) {

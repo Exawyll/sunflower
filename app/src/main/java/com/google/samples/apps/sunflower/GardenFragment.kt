@@ -25,7 +25,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.viewpager2.widget.ViewPager2
 import com.google.samples.apps.sunflower.adapters.GardenPlantingAdapter
-import com.google.samples.apps.sunflower.adapters.PLANT_LIST_PAGE_INDEX
+import com.google.samples.apps.sunflower.adapters.HOLE_LIST_PAGE_INDEX
 import com.google.samples.apps.sunflower.databinding.FragmentGardenBinding
 import com.google.samples.apps.sunflower.utilities.InjectorUtils
 import com.google.samples.apps.sunflower.viewmodels.GardenPlantingListViewModel
@@ -65,6 +65,6 @@ class GardenFragment : Fragment() {
     // TODO: convert to data binding if applicable
     private fun navigateToPlantListPage() {
         requireActivity().findViewById<ViewPager2>(R.id.view_pager).currentItem =
-            PLANT_LIST_PAGE_INDEX
+            HOLE_LIST_PAGE_INDEX
     }
 }

@@ -30,6 +30,7 @@ import com.google.samples.apps.sunflower.adapters.HoleAdapter
 import com.google.samples.apps.sunflower.databinding.FragmentHoleListBinding
 import com.google.samples.apps.sunflower.utilities.InjectorUtils
 import com.google.samples.apps.sunflower.viewmodels.HoleListViewModel
+import kotlinx.android.synthetic.main.list_item_hole.view.*
 
 class HoleListFragment : Fragment() {
 

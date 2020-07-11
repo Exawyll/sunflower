@@ -45,5 +45,6 @@
     <string name="a11y_plant_item_image">Image de plante</string>
     <string name="my_golf_title">Mes golfs</string>
     <string name="app_name" translatable="false">Golf Scorer</string>
+    <string name="hole_list_title" translatable="false">Les parcours</string>
 
 </resources>

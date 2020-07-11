@@ -18,12 +18,11 @@ package com.google.samples.apps.sunflower.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.google.samples.apps.sunflower.GardenFragment
 import com.google.samples.apps.sunflower.GolfListFragment
 import com.google.samples.apps.sunflower.HoleListFragment
 
 const val MY_GOLFS_PAGE_INDEX = 0
-const val PLANT_LIST_PAGE_INDEX = 1
+const val HOLE_LIST_PAGE_INDEX = 1
 
 class SunflowerPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
@@ -32,7 +31,7 @@ class SunflowerPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment)
      */
     private val tabFragmentsCreators: Map<Int, () -> Fragment> = mapOf(
         MY_GOLFS_PAGE_INDEX to { GolfListFragment() },
-        PLANT_LIST_PAGE_INDEX to { HoleListFragment() }
+        HOLE_LIST_PAGE_INDEX to { HoleListFragment() }
     )
 
     override fun getItemCount() = tabFragmentsCreators.size
